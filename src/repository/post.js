@@ -24,11 +24,11 @@ async function readPost(id) {
   }
 }
 
-async function getPost(topic_id) {
+async function getPosts(topic_id, limit = 10) {
   try {
     const post = await Post.findAll({
       where: { topic_id: topic_id },
-      limit: 10,
+      limit: limit,
     });
     return post;
   } catch (error) {
@@ -61,4 +61,4 @@ async function deletePost(id) {
   }
 }
 
-module.exports = { createPost, readPost, updatePost, deletePost };
+module.exports = { createPost, readPost, updatePost, deletePost, getPosts };
